@@ -1,0 +1,100 @@
+<odoo>
+    <template id="employee_appointment_letter">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <xpath expr="//div[@class='header']" position="replace">
+                        <div class="header">
+                            <br/>
+                            <table width="100%">
+                                <tr>
+                                    <td width="33%"></td>
+                                    <td width="40%">
+                                       <img class="center" style="max-height:150px;max-width:250px;"  src='arun_test/static/description/company_symbol.png'/>
+                                    </td>
+                                    <td width="27%"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </xpath>
+                    <table width="100%">
+                        <tr>
+                            <td width="80%" style="text-align:left;font-size:14px;font-family:sans-serif;">ID/<span t-field="o.name_seq"/>/2022 </td>
+                            <td width="20%" style="text-align:left;font-size:14px;font-family:sans-serif;">Date:&#160;<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/> </td>
+                        </tr><br/><br/><br/>
+                        <tr>
+                            <td width="50%" style="text-align:left;font-size:14px;font-family:sans-serif;">
+                                <b><span t-field="o.test_name"/></b><br/>
+                                <t t-if="o.inst_owner"><span t-field="o.inst_owner"/><br/></t>
+                            </td>
+                        </tr>
+                    </table><br/><br/>
+                    Dear <t t-if="o.gender == 'male'">MR</t>
+                         <t t-if="o.gender == 'female'">Miss</t>
+                         &#160;<span t-field="o.test_name"/>,<br/>
+                    <center><strong><u>LETTER OF APPOINTMENT</u></strong></center><br/><br/>
+                    <table width="100%">
+                        <tr>
+                            <td style="text-align:left;font-size:16px;font-family:sans-serif;">Appointed as "<strong><span t-field="o.job_position"/></strong>"</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left;font-size:16px;font-family:sans-serif;">With reference to your resume and the  interview you had gone through with us, we have pleasure in offering you the post of &#160;"<strong><span t-field="o.job_position"/></strong>"</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left;font-size:16px;font-family:sans-serif;">Your appointment in ABC PVT ltd  would be effective from &#160;&#160;<strong><span t-field="o.joining_date" t-options="{'format':'dd/MM/yyyy'}"/></strong><br/><br/></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left;font-size:16px;font-family:sans-serif;">You will be based at 
+                                <t t-if="o.office_address"><span t-field="o.office_address"/>,</t>
+                                <!-- <t t-if="o.address_id.street_number"><span t-field="o.address_id.street_number"/>,</t>
+                                <t t-if="o.address_id.street_number2"><span t-field="o.address_id.street_number2"/></t>, --> and report to <span t-field="o.reporting_manager"/>&#160;-&#160;<span t-field="o.mngr_position"/>, in all matters pertaining to your work.<br/><br/></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left;font-size:16px;font-family:sans-serif;">your annual salary will be &#160;&#160;<strong><span t-field="o.job_salary"/></strong><br/><br/></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left;font-size:16px;font-family:sans-serif;">You will be eligible for Provident Fund, Bonus, Gratuity and any other benefits according to Company Rules.<br/><br/></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left;font-size:16px;font-family:sans-serif;">Your general duties and responsibilities will be emailed separetly .<br/><br/></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left;font-size:16px;font-family:sans-serif;">We are enclosing herewith your Employment Terms &amp; Conditions is for your information and adherence.<br/><br/></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left;font-size:16px;font-family:sans-serif;">Please sign the duplicate copy of this letter as a token of your acceptance and return the same for our records.<br/><br/></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left;font-size:16px;font-family:sans-serif;">We welcome you to our organisation and look forward to long years of a mutually satisfying and rewarding association.<br/><br/></td>
+                        </tr>
+                    </table>
+                    
+                    All the Best!<br/><br/>
+                    Yours faithfully,<br/>
+                    For <strong>ABC pvt ltd company</strong><br/><br/>
+                    <strong>CHIEF EXECUTIVE OFFICER</strong><br/><br/><br/>
+                    
+                    <xpath expr="//div[@class='footer o_standard_footer']" position="replace">
+                        <div class="footer o_standard_footer">
+                            <table width="100%">
+                                <tr>
+                                    <td style="text-align:center;font-size:15px;font-family:sans-serif;font-weight:bold;color:#FA0730;">ABC PVT LTD COMPANY</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center;font-size:10px;font-family:sans-serif;">
+                                        Regd. &amp; Corporate Office: abc street,abc block,abc company India,<br></br>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center;font-size:10px;font-family:sans-serif;">
+                                        Email: abcpvtltd@abc.com | URL: abc.com 
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </xpath>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

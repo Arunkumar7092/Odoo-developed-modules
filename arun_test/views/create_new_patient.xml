@@ -1,0 +1,99 @@
+<odoo>
+    <template id="CreatePatient" name="CreatePatient">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <div id="IndexSubmit">
+                    
+                    <!--  dashboard -->
+                    <div class="search-bar" id="divSearchBar" style="padding: 10px;background-color: orange;">
+                            <div class="container">
+                                <div class="col-sm-4"><h1>Create Employee</h1></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-4" style="margin-top: 22px;">
+                                    <form action="/patients" id="frmGetCustomer" method="POST">
+                                        <div class="input-group input-group-sm">
+                                            <input autocomplete="off" type="text" class="form-control" required="required" id="search" name="search" placeholder="Enter mobile/name/email"/>
+                                            <span class="border border-dark">
+                                                <button type="submit" class="a-submit btn btn-default btn-flat"><i class="fa fa-search" ></i></button>
+                                            </span>
+                                        </div>
+                                    </form>
+                                  </div> 
+                                  <!-- <div class="col-sm-2">
+                                      <a  t-attf-href="/create-patient/#{data}" class="button a_color">
+                                        <button type="button" class="btn btn-primary pull-center" style="right: 10px;"  t-attf-value="#{data}" id="btnCreatePatient">Create Patient</button>
+                                    </a>
+                                </div> -->
+                            </div>
+                    </div>
+                    <form action="/patient-created" method="POST">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <div class="modal-body">
+                            <div>
+                                <div class="row input-aliments">
+                                    <div class="col-sm-4">
+                                        <!-- <div class="txt-color" style="float: left;color:#8c8c8c;">  Name : </div>
+                                        <input  autocomplete="off" type="text" style="width: 100%;" class="form-control datepicker validate[required]" id="test_name" name="test_name" /> -->
+                                        <label for="test_name" class="control-label">Name*</label>
+                                        <input type="text" name="test_name" t-att-value="test_name" id="test_name" size="50" 
+                                        class="form-control" placeholder="e.g. your name" required="required"/>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <!-- <div class="txt-color" style="float: left;color:#8c8c8c;">  Age: </div>
+                                        <input  autocomplete="off" type="text" style="width: 100%;" class="form-control datepicker validate[required]" id="test_age" name="test_age" /> -->
+                                        <label for="test_age" class="control-label">Age*</label>
+                                        <input type="number" name="test_age" t-att-value="test_age" id="test_age" maxlength="10" style="width:100%;max-width: 260px" 
+                                        class="form-control" required="required" />
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <!-- <div class="txt-color" style="float: left;color:#8c8c8c;">  Email : </div>
+                                        <input  autocomplete="off" type="text" style="width: 100%;" class="form-control datepicker validate[required]" id="email_id" name="email_id" /> -->
+                                        <label for="job_position" class="control-label">Applying For Position*</label>
+                                        <input type="text" name="job_position" t-att-value="job_position" id="job_position" maxlength="20" style="width:100%;max-width: 260px" 
+                                        class="form-control" required="required" />
+                                    </div>
+                                    
+                                </div>
+                                <div class="row input-aliments">
+                                    <div class="col-sm-4">
+                                        <!-- <div class="txt-color" style="float: left;color:#8c8c8c;"> Applying For Position : </div>
+                                        <input type="text" autocomplete="off" style="width: 100%;" class="form-control validate[required]" id="job_position" name="job_position" /> -->
+                                        <label for="email_id" class="control-label">Email*</label>
+                                        <input type="email" name="email_id" t-att-value="email_id" id="email_id" maxlength="80" style="width:100%;max-width: 535px"
+                                        class="form-control" required="required"/>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <!-- <div class="txt-color" style="float: left;color:#8c8c8c;"> Birth date : </div>
+                                        <input type="date" style="width: 100%;" class="form-control validate[required]" id="start_date" name="start_date" /> -->
+                                        <label for="start_date" class="control-label">Birth date</label>
+                                        <input type="date" name="start_date" t-att-value="start_date" id="start_date" maxlength="100" style="width:100%;max-width: 535px"
+                                        class="form-control" required="required"/>
+
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="txt-color" style="float: left;color:#8c8c8c;"> Mobile Number : </div>
+                                        <input type="text" style="width: 100%;" class="form-control validate[required]" id="company_name" name="company_name" required="required" />
+                                    </div>
+                                </div>
+                              
+                                <div class="row input-aliments">
+                                    <div class="col-sm-4">
+                                        <input type="checkbox" name="create_App" id="create_App" value="1"/>
+                                        <div class="txt-color" style="float: left;color:#8c8c8c;"> Create Appointment :  </div><br/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="submit"  class="btn btn-primary">Create Patient</button>
+                            <button padding = "15px 42px" type="submit" class="btn btn-primary pull-center">Submit</button>
+                        </div>
+                    </form>
+                   
+                </div>
+            </div>
+        </t>
+
+    </template>
+</odoo>

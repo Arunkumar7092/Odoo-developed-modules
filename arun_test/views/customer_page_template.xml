@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="customer_page" name="Example page" >
+            <t t-call="website.layout">
+                <div id="wrap" class="oe_structure oe_empty">
+                    <div id="ListPage">
+                        <div class="search-bar" id="divSearchBar" style="padding: 10px;background-color: orange;">
+                            <div class="container">
+                                <div class="col-sm-4">
+                                    <h1>SEARCH EMPLOYEE</h1>
+                                </div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-offset-2 col-sm-4" style="margin-top: 22px;">
+                                    <form action="/patients" id="frmGetCustomer" method="POST">
+                                        <div class="input-group input-group-sm">
+                                            <input  autocomplete="off" type="text" class="form-control" required="required" id="search"
+                                                   name="search" placeholder="Enter mobile/name/email" align="right"/>
+                                            <span class="border border-dark">
+                                                <button type="submit" class="btn a-submit btn-default btn-flat"><i
+                                                        class="fa fa-search" ></i></button>
+                                                   <!-- <button padding = "15px 42px" type="submit" class="btn btn-primary pull-center">Submit</button> -->
+
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
+                                    
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span t-if="details">
+                            <div class="container-fuild" style="background: #fff;padding: 20px;background-color:LightGray ">
+                                <div id="ClientDetails">
+                                    <table class="table table-striped" id="PatientsTable">
+                                        <thead>
+                                            <tr class="active">
+                                                <th>Name#</th>
+                                                <th>Age</th>
+                                                <th>Mobile Number</th>
+                                                <th>PAN No</th>
+                                                <th>Aadhar Card no</th>
+                                                <th>Email</th>
+                                            </tr> 
+                                        </thead>
+                                        <tbody>
+                                            <t t-foreach="details" t-as="customer">
+                                                <t t-set="customer_details" t-value="customer"/>
+                                                <tr id="package"> 
+                                                    <td>
+                                                        <span t-esc="customer['test_arun']"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="customer['test_age']"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="customer['company_name']"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="customer['pan_no']"/>
+                                                    </td>
+                                                    <!-- <td> 
+                                                        <a t-attf-href="/patientdetails/mobile/#{customer['mobile']}" class="button">
+                                                            <span  class="company_name"  t-esc="customer['company_name']"/>
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                    <a t-attf-href="/patientdetails/code/#{customer['patient_code']}" class="button">
+                                                        <span class="pan_no" t-esc="customer['pan_no']"/>
+                                                    </a>
+                                                    </td> -->
+                                                    <td>
+                                                        <span t-esc="customer['aadhar_no']"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="customer['email_id']"/>
+                                                    </td>
+                                                </tr> 
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>    
+                        </span>
+                    </div>
+                </div>    
+            </t>
+        </template>
+    </data>
+</odoo>     

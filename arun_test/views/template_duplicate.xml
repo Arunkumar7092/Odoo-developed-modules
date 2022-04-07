@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="menu_patient_form" model="website.menu">
+            <field name="name">Personal Detail Form</field>
+            <field name="url">/employee_webform</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence">55</field>
+        </record>
+        <record id="menu_educational_form" model="website.menu">
+            <field name="name">Educational Detail</field>
+            <field name="url">/employee_educationform</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence">55</field>
+        </record>
+         <record id="menu_skill_form" model="website.menu">
+            <field name="name">Employee Contacts</field>
+            <field name="url">/employee_skillsetform</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence">55</field>
+        </record>
+
+        <template id="create_employee" name="Employee Form">
+            <t t-call="website.layout">
+                <div id="wrap">
+                    <div class="oe_structure"   style="padding: 10px;background-color: LightGray;">
+                        <div class="container" >
+                        
+                            <form role="form" action="/create/webemployee" method="POST">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                                <h style ="text-align:left;font-size:25px;font-family:sans-serif;font-color:PowderBlue;font-weight: 700;">Personal Details</h>
+                                <table border="0" cellpadding="5" cellspacing="0">
+                                    <tr style="width:100%">
+                                        <td style="width:50%">
+                                            <label for="test_name" class="control-label">Name*</label>
+                                            <input type="text" name="test_name" t-att-value="test_name" id="test_name" size="50" 
+                                            class="form-control" placeholder="e.g. your name" required="required"/>
+                                        </td> 
+                                        <td style="width:15%">
+                                            <label for="test_age" class="control-label">Age*</label>
+                                            <input type="number" name="test_age" t-att-value="test_age" id="test_age" maxlength="10" style="width:100%;max-width: 260px" 
+                                            class="form-control"  required="required"/>                                            
+                                        </td> 
+                                        <br></br>
+                                        <td style="width:25%">
+                                            <label for="notes" class="control-label">Applying For Position*</label>
+                                            <input type="text" name="job_position" t-att-value="job_position" id="job_position" maxlength="20" style="width:100%;max-width: 260px" 
+                                            class="form-control"  required="required"/>                                            
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td >
+                                            <label for="email_id" class="control-label">Email*</label>
+                                            <input type="email" name="email_id" t-att-value="email_id" id="email_id" maxlength="80" style="width:100%;max-width: 535px"
+                                            class="form-control" required="required"/>
+                                        </td>
+                                        <td>
+                                            <label for="start_date" class="control-label">Birth date</label>
+                                            <input type="date" name="start_date" t-att-value="start_date" id="start_date" maxlength="100" style="width:100%;max-width: 535px"
+                                            class="form-control" />
+                                        </td>
+                                        <td style="width:100%">
+                                            <label for="company_name" class="control-label">Mobile Number*</label>
+                                            <input type="text" name="company_name" t-att-value="company_name" id="company_name" size="100" style="width:100%;max-width: 535px"
+                                            class="form-control" required="required"/>
+                                        </td>
+                                    </tr>
+                                    <tr> 
+
+                                        <td> 
+                                            <label for="inst_owner" class="control-label">Contact Adress</label>
+                                            <input type="text" name="inst_owner" t-att-value="inst_owner" id="inst_owner" maxlength="100" style="width:100%;max-width: 535px"
+                                            class="form-control" />
+                                        </td>
+                                         <td > 
+                                            <label for="about" class="control-label">About</label>
+                                            <input type="text" name="about" t-att-value="about" id="about" maxlength="100" style="width:100%;max-width: 535px"
+                                            class="form-control" />
+                                        </td>
+                                    </tr> 
+                                </table>
+                                <br>
+                                </br>
+                                <br>
+                                </br>
+                                <br>
+                                </br>
+                                
+                                <h style ="text-align:left;font-size:25px;font-family:sans-serif;font-color:PowderBlue;font-weight: 700;">Educational details</h>
+                                <p>(please also attach the certificate of education qualified that mentioned below)</p>
+                                
+                                <br>
+                                </br>
+
+                                <table border="0" cellpadding="5" cellspacing="0">
+
+                                    <th style ="text-align:left;font-size:25px;font-family:sans-serif;font-color:PowderBlue;">High school</th>
+                                    <tr style="width:100%">
+                                        <td style="width:50%">
+                                            <label for="school" class="control-label">Name Of Institute*</label>
+                                            <input type="text" name="school" t-att-value="school" id="school" size="50" 
+                                            class="form-control" />
+                                        </td> 
+                                        <td>
+                                            <label for="sc_percentage" class="control-label">Percentage*</label>
+                                            <input type="number" name="sc_percentage" t-att-value="sc_percentage" id="sc_percentage" maxlength="10" style="width:100%;max-width: 260px" 
+                                            class="form-control"  />                                            
+                                        </td>
+                                        <td>
+                                            <label for="rollno1" class="control-label">Registration Number*</label>
+                                            <input type="number" name="rollno1" t-att-value="rollno1" id="rollno1" 
+                                            class="form-control"  />                                            
+                                        </td> 
+                
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="sc_From1" class="control-label">Batch From*</label>
+                                            <input type="date" name="sc_From1" t-att-value="sc_From1" id="sc_From1" maxlength="100" style="width:100%;max-width: 535px"
+                                            class="form-control" />
+                                        </td>
+                                        <td>
+                                            <label for="sc_To1" class="control-label">Batch To*</label>
+                                            <input type="date" name="sc_To1" t-att-value="sc_To1" id="sc_To1" maxlength="100" style="width:100%;max-width: 535px"
+                                            class="form-control" />
+                                        </td>
+                                    </tr>
+
+                                </table>
+                                <table border="0" cellpadding="5" cellspacing="0">
+
+                                    <th style ="text-align:left;font-size:25px;font-family:sans-serif;font-color:PowderBlue;">Higher secondary</th>
+                                    <tr style="width:100%">
+                                        <td style="width:50%">
+                                            <label for="school2" class="control-label">Name Of Institute*</label>
+                                            <input type="text" name="school2" t-att-value="school2" id="school2" size="50" 
+                                            class="form-control" />
+                                        </td> 
+                                        <td>
+                                            <label for="sc_percentage2" class="control-label">Percentage*</label>
+                                            <input type="number" name="sc_percentage2" t-att-value="sc_percentage2" id="sc_percentage2" maxlength="10" style="width:100%;max-width: 260px" 
+                                            class="form-control"  />                                            
+                                        </td>
+                                        <td>
+                                            <label for="rollno2" class="control-label">Registration Number*</label>
+                                            <input type="number" name="rollno2" t-att-value="rollno2" id="rollno2" 
+                                            class="form-control"  />                                            
+                                        </td> 
+                
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <label for="sc_From2" class="control-label">Batch From*</label>
+                                            <input type="date" name="sc_From2" t-att-value="sc_From2" id="sc_From2" maxlength="100" style="width:100%;max-width: 535px"
+                                            class="form-control" />
+                                        </td>
+                                        <td>
+                                            <label for="sc_To2" class="control-label">Batch To*</label>
+                                            <input type="date" name="sc_To1" t-att-value="sc_To2" id="sc_To2" maxlength="100" style="width:100%;max-width: 535px"
+                                            class="form-control" />
+                                        </td>
+                                    </tr>
+
+                                </table>
+
+                                <table border="0" cellpadding="5" cellspacing="0">
+
+                                    <th style ="text-align:left;font-size:25px;font-family:sans-serif;font-color:PowderBlue;">Graduation</th>
+                                    <tr style="width:100%">
+
+                                        <td style="width:50%">
+                                            <label for="college_name" class="control-label">Name Of Institute</label>
+                                            <input type="text" name="college_name" t-att-value="college_name" id="college_name" size="50" 
+                                            class="form-control" />
+                                        </td> 
+
+                                        <td>
+                                            <label for="dg_percentage" class="control-label">Percentage*</label>
+                                            <input type="number" name="dg_percentage" t-att-value="dg_percentage" id="dg_percentage" maxlength="10" style="width:100%;max-width: 260px" 
+                                            class="form-control"  />                                            
+                                        </td>
+
+                                        <td>
+                                            <label for="rollno3" class="control-label">Registration Number*</label>
+                                            <input type="number" name="rollno3" t-att-value="rollno3" id="rollno3" 
+                                            class="form-control"  />                                            
+                                        </td> 
+                
+                                    </tr>
+
+                                    <tr style="width:100%">
+                                        <td style="width:50%">
+                                            <label for="degree" class="control-label">Graduation Degree*</label>
+                                            <input type="text" name="degree" t-att-value="degree" id="degree" 
+                                            class="form-control"  />
+                                        </td> 
+
+                                        <td>
+                                            <label for="sc_From3" class="control-label">Batch From*</label>
+                                            <input type="date" name="sc_From3" t-att-value="sc_From3" id="sc_From3" maxlength="100" style="width:100%;max-width: 535px"
+                                            class="form-control" />
+                                        </td>
+
+                                        <td>
+                                            <label for="sc_To3" class="control-label">Batch To*</label>
+                                            <input type="date" name="sc_To3" t-att-value="sc_To3" id="sc_To3" maxlength="100" style="width:100%;max-width: 535px"
+                                            class="form-control" />
+                                        </td>
+
+                                    </tr>
+
+
+                                </table>
+                                <br>
+                                </br>
+                                <br>
+                                </br>
+
+                                <br>
+                                </br>
+                                 <h style ="text-align:left;font-size:25px;font-family:sans-serif;font-color:PowderBlue;font-weight: 700;">Skill Sets</h>
+                                 <p>(Enter the skills you have masterd eg:programming language etc.)</p>
+                                <br>
+                                </br>
+                                <table border="0" cellpadding="5" cellspacing="0">
+
+                                    <!-- <th style ="text-align:left;font-size:25px;font-family:sans-serif;font-color:PowderBlue;">Skill Sets</th> -->
+                                    <tr>
+
+                                        <td>
+                                            <label for="programming_skills1" class="control-label">Skill 1</label>
+                                            <input type="text" name="programming_skills1" t-att-value="programming_skills1" id="/programming_skills1" />
+                                        </td>
+                                        <td>
+                                            <label for="programming_skills2" class="control-label">Skill 2</label>
+                                            <input type="text" name="programming_skills2" t-att-value="programming_skills2" id="/programming_skills2" />
+                                        </td>
+                                        <td>
+                                            <label for="programming_skills3" class="control-label">Skill 3</label>
+                                            <input type="text" name="programming_skills3" t-att-value="programming_skills3" id="/programming_skills3" />
+                                        </td>
+                                        <td>
+                                            <label for="programming_skills4" class="control-label">Skill 4</label>
+                                            <input type="text" name="programming_skills4" t-att-value="programming_skills4" id="/programming_skills4" />
+                                        </td> 
+                                    </tr>
+
+                                    <tr>
+                                        <br>
+                                        </br>
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            <label for="programming_skills5" class="control-label">Skill 5</label>
+                                            <input type="text" name="programming_skills5" t-att-value="programming_skills5" id="/programming_skills5" />
+                                        </td>
+                                        <td>
+                                            <label for="programming_skills6" class="control-label">Skill 6</label>
+                                            <input type="text" name="programming_skills6" t-att-value="programming_skills6" id="/programming_skills6" />
+                                        </td>
+                                        <td>
+                                            <label for="programming_skills7" class="control-label">Skill 7</label>
+                                            <input type="text" name="programming_skills7" t-att-value="programming_skills7" id="/programming_skills7" />
+                                        </td>
+                                        <td>
+                                            <label for="programming_skills8" class="control-label">Skill 8</label>
+                                            <input type="text" name="programming_skills8" t-att-value="programming_skills8" id="/programming_skills8" />
+                                        </td> 
+                                    </tr>
+                                </table>
+
+                                <br>
+                                </br>
+                                 <br>
+                                </br>
+
+
+                                <h style ="text-align:left;font-size:25px;font-family:sans-serif;font-color:PowderBlue;font-weight: 700;">Language Known to Speak</h>
+                                <br>
+                                </br>
+                                 <br>
+                                </br>
+
+                                <table border="0" cellpadding="5" cellspacing="0">
+
+                                    <!-- <th style ="text-align:left;font-size:25px;font-family:sans-serif;font-color:PowderBlue;">Language Known to Speak</th> -->
+                                    <tr>
+
+                                        <td>
+                                            <label for="language_skills1" class="control-label">language 1</label>
+                                            <input type="text" name="language_skills1" t-att-value="language_skills1" id="language_skills1" />
+                                        </td>
+
+                                        <td>
+                                            <label for="language_skills2" class="control-label">language 2</label>
+                                            <input type="text" name="language_skills2" t-att-value="language_skills2" id="language_skills2" />
+                                        </td>
+
+                                        <td>
+                                            <label for="language_skills3" class="control-label">language 3</label>
+                                            <input type="text" name="language_skills3" t-att-value="language_skills3" id="language_skills3" />
+                                        </td>
+
+                                        <td>
+                                            <label for="language_skills4" class="control-label">language 4</label>
+                                            <input type="text" name="language_skills4" t-att-value="language_skills4" id="language_skills4" />
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <br>
+                                </br>
+
+                                <br>
+                                </br>
+                                 <h style ="text-align:left;font-size:25px;font-family:sans-serif;font-color:PowderBlue;font-weight: 700;">Previous Employment details</h>
+                                <br>
+                                </br>
+                                <br>
+                                </br>
+
+                                <div class="container">
+                                        <table class="table table-bordered table-dark" bordercolor="black" style="width:120%">
+                                            <thead class="table table-bordered" bordercolor="black" width="100">
+                                                <tr  style="width:50%">
+                                                    <td style="text-align:left;font-size:16px;font-family:sans-serif;color:white;"> 
+                                                        Company Name
+                                                    </td>
+                                                    <td style="text-align:left;font-size:16px;font-family:sans-serif;color:white;">
+                                                        Emp ID
+                                                    </td>
+                                                    <td style="text-align:left;font-size:16px;font-family:sans-serif;color:white;">
+                                                        Job Title
+                                                    </td>
+                                                    <td style="text-align:left;font-size:16px;font-family:sans-serif;color:white;">
+                                                        From Date
+                                                    </td>
+                                                    <td style="text-align:left;font-size:16px;font-family:sans-serif;color:white;">
+                                                        To Date
+                                                    </td>
+                                                    <td style="text-align:left;font-size:16px;font-family:sans-serif;color:white;">
+                                                        Salary/Year
+                                                    </td>
+                                                    <td style="text-align:left;font-size:16px;font-family:sans-serif;color:white;">
+                                                        Reason For Leaving
+                                                    </td>
+                                                    <td style="text-align:left;font-size:16px;font-family:sans-serif;color:white;">
+                                                        Company Address
+                                                    </td>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- <t t-foreach="employees" t-as="employee">  -->
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" name="empployment_name" t-att-value="empployment_name" id="empployment_name" size="13" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="employment_id" t-att-value="employment_id" id="employment_id" size="13" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="empployment_title" t-att-value="empployment_title" id="empployment_title" size="13"/>
+                                                        </td>
+                                                        <td>
+                                                            <input type="date" name="from_date" t-att-value="from_date" id="from_date" style="width:150px" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="date" name="To_date" t-att-value="To_date" id="To_date" style="width:150px" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" name="employment_salary" t-att-value="employment_salary" id="employment_salary" style="width:150px" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="employment_resignation" t-att-value="employment_resignation" id="employment_resignation" size="13" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="empployment_address" t-att-value="empployment_address" id="empployment_address" size="13" />
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" name="empployment_name" t-att-value="empployment_name" id="empployment_name" size="13" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="employment_id" t-att-value="employment_id" id="employment_id" size="13" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="empployment_title" t-att-value="empployment_title" id="empployment_title" size="13"/>
+                                                        </td>
+                                                        <td>
+                                                            <input type="date" name="from_date" t-att-value="from_date" id="from_date" style="width:150px" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="date" name="To_date" t-att-value="To_date" id="To_date" style="width:150px" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" name="employment_salary" t-att-value="employment_salary" id="employment_salary" style="width:150px" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="employment_resignation" t-att-value="employment_resignation" id="employment_resignation" size="13" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="empployment_address" t-att-value="empployment_address" id="empployment_address" size="13" />
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" name="empployment_name" t-att-value="empployment_name" id="empployment_name" size="13" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="employment_id" t-att-value="employment_id" id="employment_id" size="13" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="empployment_title" t-att-value="empployment_title" id="empployment_title" size="13"/>
+                                                        </td>
+                                                        <td>
+                                                            <input type="date" name="from_date" t-att-value="from_date" id="from_date" style="width:150px" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="date" name="To_date" t-att-value="To_date" id="To_date" style="width:150px" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" name="employment_salary" t-att-value="employment_salary" id="employment_salary" style="width:150px" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="employment_resignation" t-att-value="employment_resignation" id="employment_resignation" size="13" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="empployment_address" t-att-value="empployment_address" id="empployment_address" size="13" />
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" name="empployment_name" t-att-value="empployment_name" id="empployment_name" size="13" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="employment_id" t-att-value="employment_id" id="employment_id" size="13" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="empployment_title" t-att-value="empployment_title" id="empployment_title" size="13"/>
+                                                        </td>
+                                                        <td>
+                                                            <input type="date" name="from_date" t-att-value="from_date" id="from_date" style="width:150px" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="date" name="To_date" t-att-value="To_date" id="To_date" style="width:150px" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" name="employment_salary" t-att-value="employment_salary" id="employment_salary" style="width:150px" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="employment_resignation" t-att-value="employment_resignation" id="employment_resignation" size="13" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="empployment_address" t-att-value="empployment_address" id="empployment_address" size="13" />
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                 <!-- </t>   -->
+                                            </tbody>
+                                        </table>
+
+                                </div>
+  
+                                  
+                                <br>
+                                </br>
+                                <div class="clearfix oe_login_buttons">
+
+                                    <div class="text-center">
+
+                                     <button padding = "15px 42px" type="submit" class="btn btn-primary pull-center">Submit</button>
+
+                                    </div>
+
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <record id="employee_thanks" model="website.page">
+            <field name="name">Thanks</field>
+            <field name="type">qweb</field>
+            <field name="url">/employee-thank-you</field>
+            <field name="website_published">True</field>
+            <field name="key">arun_test.employee_thanks</field>
+            <field name="arch" type="xml">
+                <t name="Thanks" t-name="arun_test.employee_thanks">
+                    <t t-call="website.layout">
+                        <div id="wrap">
+                            <div class="container">
+                                <h1>Thanks!</h1>
+                                
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <div class="alert alert-success" role="status"> Form Submitted  successfully . </div>
+                                        <h2>Make sure all other Form details has been filled.</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </field>
+        </record>
+</odoo>

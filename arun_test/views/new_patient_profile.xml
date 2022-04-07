@@ -1,0 +1,50 @@
+<odoo>
+    <template id="NewPatientProfile" name="NewPatientProfile">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty" style="padding: 10px;background-color: LightGray;">
+
+                        <div class="search-bar" id="divSearchBar" style="padding: 10px;background-color: orange;">
+                            <div class="container">
+                                <div class="col-sm-4"><h1>Create Employee</h1></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-4" style="margin-top: 22px;">
+                                    <form action="/patients" id="frmGetCustomer" method="POST">
+                                        <div class="input-group input-group-sm">
+                                            <input autocomplete="off" type="text" class="form-control" required="required" id="search" name="search" placeholder="Enter mobile/name/email"/>
+                                            <span class="border border-dark">
+                                                <button type="submit" class="a-submit btn btn-default btn-flat"><i class="fa fa-search" ></i></button>
+                                            </span>
+                                        </div>
+                                    </form>
+                                  </div> 
+                                  <!-- <div class="col-sm-2">
+                                      <a  t-attf-href="/create-patient/#{data}" class="button a_color">
+                                        <button type="button" class="btn btn-primary pull-center" style="right: 10px;"  t-attf-value="#{data}" id="btnCreatePatient">Create Patient</button>
+                                    </a>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="container" style="background: #fff;padding: 20px;background-color:LightGray">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="error-template">
+                                        <h2>
+                                            <span t-esc="data"/> no records found.</h2>
+                                        <div class="error-actions">
+                                            <a t-attf-href="/create-patient" class="button a_color">
+                                                <button type="button" class="btn btn-primary pull-center"  t-attf-value="#{data}" id="btnCreatePatient">Create Patient</button>
+                                        </a>
+                                            <!--<a href="/" class="btn btn-primary btn-lg"><span
+                                                    class="glyphicon glyphicon-home"></span>
+                                                Home </a>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+            </div>
+        </t>
+
+    </template>
+</odoo>

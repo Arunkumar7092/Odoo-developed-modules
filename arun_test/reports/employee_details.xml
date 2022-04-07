@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="employee_details">
+           <t t-call="web.html_container">
+               <t t-foreach="docs" t-as="o">
+                   <t t-call="web.external_layout">
+                        <!-- <t t-call="web.internal_layout"> -->
+                                <t t-set="data_report_margin_top" t-value="12"/>
+                                <t t-set="data_report_header_spacing" t-value="9"/>
+                                <t t-set="data_report_dpi" t-value="110"/>
+                                    <div class="page">
+                                            <h2>Employee Details</h2>
+                                        <!-- <table width="40%" class="table table-sm table-boardered">
+                                            <tr>
+                                                <td>
+                                                    <p><strong>Name:</strong></p>
+                                                    <p ><strong>Note:</strong></p>
+                                                    <br></br>
+                                                    <p><strong>owner:</strong></p>
+                                                    <p><strong>End date:</strong></p>
+                                                </td>
+                                                <td>
+                                                    <p t-field="o.test_name"/>
+                                                    <p t-field="o.notes"/>
+                                                    <p t-field="o.inst_owner"/>
+                                                    <p t-field="o.end_date"/>
+                                                </td>  
+                                                <td width="40%">
+                                                        <td colspan="4">
+                                                            <p><strong>age: </strong></p>
+                                                            <p><strong>company name: </strong></p>
+                                                            <p><strong>start date: </strong></p>
+                                                            <p><strong>college name: </strong></p>
+                                                        </td>
+                                                        <td colspan="4">
+                                                            <p t-field="o.test_age"/>
+                                                            <p t-field="o.company_name"/>
+                                                            <br></br>
+                                                            <p t-field="o.start_date"/>
+                                                            <p t-field="o.college_name"/>
+                                                        </td>
+                                                </td>
+                                            </tr>
+                                        </table>  -->
+                                        <!-- <table class="table table-sm o_main_table"> -->
+                                                <!-- <th class="text-left">Company name</th>
+                                                <th class="text-right">Emp ID</th>
+                                                <th class="text-center">Job Title</th>
+                                                <th class="text-right">From Date</th>
+                                                <th class="text-right">To Date</th>
+                                                <th class="text-right">Salary/year</th>
+                                                <th class="text-right">Reason for leaving</th>
+                                                <th class="text-right">Emp Company address</th> -->
+
+
+                                        <!-- <tr> -->
+                                            <!-- <tr t-foreach='o.employment_line_ids' t-as='line'>
+                                                    <td><span t-esc="line.empployment_name"/></td>
+                                                    <td><span t-esc="line.employment_id"/></td>
+                                                    <td><span t-esc="line.empployment_title"/></td>
+                                                    <td><span t-esc="line.from_date"/></td>
+                                                    <td><span t-esc="line.To_date"/></td>
+                                                    <td><span t-esc="line.employment_salary"/></td>
+                                                    <td><span t-esc="line.employment_resignation"/></td>
+                                                    <td><span t-esc="line.empployment_address "/></td>
+                                                </tr>
+                                            </tr> -->
+                                        <!-- </table> -->
+                                    
+
+                                        <table width="20%" class="table table-sm table-boardered">
+                                            <tr>
+                                                <td width="20%" style="text-align:left;font-size:16px;font-family:sans-serif;font-weight:bold;border:1px solid black;">Name:</td>
+                                                <td width="20%" style="text-align:left;font-size:16px;font-family:sans-serif;border:1px solid black;"><span t-field="o.test_name"/></td>
+                                                <td colspan="4" width="20%" style="text-align:left;font-size:16px;font-family:sans-serif;font-weight:bold;border:1px solid black;">Age:</td>
+                                                <td colspan="4" width="20%" style="text-align:left;font-size:16px;font-family:sans-serif;border:1px solid black;"><span t-field="o.test_age"/></td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td width="20%" style="text-align:left;font-size:16px;font-family:sans-serif;font-weight:bold;border:1px solid black;">Description</td>
+                                                <td width="20%" style="text-align:left;font-size:16px;font-family:sans-serif;border:1px solid black;"><span t-field="o.notes"/></td>
+                                                <td colspan="4" width="20%" style="text-align:left;font-size:16px;font-family:sans-serif;font-weight:bold;border:1px solid black;">Mobile Number</td>
+                                                <td colspan="4" width="20%" style="text-align:left;font-size:16px;font-family:sans-serif;border:1px solid black;"><span t-field="o.company_name"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="20%" style="text-align:left;font-size:16px;font-family:sans-serif;font-weight:bold;border:1px solid black;">Contact address</td>
+                                                <td width="20%" style="text-align:left;font-size:16px;font-family:sans-serif;border:1px solid black;"><span t-field="o.inst_owner"/></td>
+                                                <td colspan="4" width="20%" style="text-align:left;font-size:16px;font-family:sans-serif;font-weight:bold;border:1px solid black;">Birth Date</td>
+                                                <td colspan="4" width="20%" style="text-align:left;font-size:16px;font-family:sans-serif;border:1px solid black;"><span t-field="o.start_date"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="20%" style="text-align:left;font-size:16px;font-family:sans-serif;font-weight:bold;border:1px solid black;">Gender</td>
+                                                <td width="20%" style="text-align:left;font-size:16px;font-family:sans-serif;border:1px solid black;"><span t-field="o.gender"/></td>
+                                                <td colspan="4" width="20%" style="text-align:left;font-size:16px;font-family:sans-serif;font-weight:bold;border:1px solid black;">Age group</td>
+                                                <td colspan="4" width="20%" style="text-align:left;font-size:16px;font-family:sans-serif;border:1px solid black;"><span t-field="o.age_group"/></td>
+                                            </tr>
+                                        </table>
+
+
+                                        <table width="40%" class="table table-sm table-boardered">
+                                            <tr>
+                                                <td width="20%" style="text-align:left;font-size:16px;font-family:sans-serif;font-weight:bold;border:1px solid black;">Company name</td>
+                                                <td width="20%" style="text-align:center;font-size:16px;font-family:sans-serif;font-weight:bold;border:1px solid black;">Emp ID</td>
+                                                <td width="20%" style="text-align:center;font-size:16px;font-family:sans-serif;font-weight:bold;border:1px solid black;">Job Title </td>
+                                                <td width="20%" style="text-align:center;font-size:16px;font-family:sans-serif;font-weight:bold;border:1px solid black;">From Date</td>
+                                                <td width="20%" style="text-align:center;font-size:16px;font-family:sans-serif;font-weight:bold;border:1px solid black;">To Date </td>
+                                                <td width="20%" style="text-align:center;font-size:16px;font-family:sans-serif;font-weight:bold;border:1px solid black;">Salary/year </td>
+                                                <td width="20%" style="text-align:center;font-size:16px;font-family:sans-serif;font-weight:bold;border:1px solid black;">Reason for leaving</td>
+                                                <td width="20%" style="text-align:center;font-size:16px;font-family:sans-serif;font-weight:bold;border:1px solid black;">Emp Company address</td>
+                                            </tr>
+                                            <tr t-foreach='o.employment_line_ids' t-as='line'>
+                                                <td width="20%" style="text-align:left;font-size:16px;font-family:sans-serif;font-weight:bold;border:1px solid black;"><span t-esc="line.empployment_name"/></td>
+                                                <td width="20%" style="text-align:center;font-size:16px;font-family:sans-serif;font-weight:bold;border:1px solid black;"><span t-esc="line.employment_id"/></td>
+                                                <td width="20%" style="text-align:center;font-size:16px;font-family:sans-serif;font-weight:bold;border:1px solid black;"><span t-esc="line.empployment_title"/></td>
+                                                <td width="20%" style="text-align:center;font-size:16px;font-family:sans-serif;font-weight:bold;border:1px solid black;"><span t-esc="line.from_date"/></td>
+                                                <td width="20%" style="text-align:center;font-size:16px;font-family:sans-serif;font-weight:bold;border:1px solid black;"><span t-esc="line.To_date"/></td>
+                                                <td width="20%" style="text-align:center;font-size:16px;font-family:sans-serif;font-weight:bold;border:1px solid black;"><span t-esc="line.employment_salary"/></td>
+                                                <td width="20%" style="text-align:center;font-size:16px;font-family:sans-serif;font-weight:bold;border:1px solid black;"><span t-esc="line.employment_resignation"/></td>
+                                                <td width="20%" style="text-align:center;font-size:16px;font-family:sans-serif;font-weight:bold;border:1px solid black;"><span t-esc="line.empployment_address "/></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                        <!-- </t> -->
+                   </t>
+                </t>
+            </t>
+    </template>
+</odoo>

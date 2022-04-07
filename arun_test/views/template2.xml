@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="menu_educational_form" model="website.menu">
+            <field name="name">Educational Detail</field>
+            <field name="url">/employee_educationform</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence">55</field>
+        </record>
+
+        <template id="create_educational" name="Educational Form">
+            <t t-call="website.layout">
+                <div id="wrap">
+                    <div class="oe_structure"   style="padding: 10px;background-color: LightGray;">
+                        <div class="container" >
+                        
+                            <form role="form" action="/create/webeducation" method="POST">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <table border="0" cellpadding="5" cellspacing="0">
+                                    <table border="0" cellpadding="5" cellspacing="0">
+
+                                        <th style ="text-align:left;font-size:25px;font-family:sans-serif;font-color:PowderBlue;">High school</th>
+                                        <tr style="width:100%">
+                                            <td style="width:50%">
+                                                <label for="school" class="control-label">Name Of Institute</label>
+                                                <input type="school" name="school" t-att-value="school" id="school" size="50" 
+                                                class="form-control" required="required"/>
+                                            </td> 
+                                            <td>
+                                                <label for="sc_percentage" class="control-label">Percentage</label>
+                                                <input type="number" name="test_age" t-att-value="test_age" id="test_age" maxlength="10" style="width:100%;max-width: 260px" 
+                                                class="form-control"  required="required"/>                                            
+                                            </td>
+                                            <td>
+                                                <label for="rollno1" class="control-label">Registration Number</label>
+                                                <input type="rollno1" name="rollno1" t-att-value="rollno1" id="rollno1" 
+                                                class="form-control"  required="required"/>                                            
+                                            </td> 
+                    
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label for="sc_From1" class="control-label">Batch From</label>
+                                                <input type="date" name="sc_From1" t-att-value="sc_From1" id="sc_From1" maxlength="100" style="width:100%;max-width: 535px"
+                                                class="form-control" required="required"/>
+                                            </td>
+                                            <td>
+                                                <label for="sc_To1" class="control-label">Batch To</label>
+                                                <input type="date" name="sc_To1" t-att-value="sc_To1" id="sc_To1" maxlength="100" style="width:100%;max-width: 535px"
+                                                class="form-control" required="required"/>
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                     <table border="0" cellpadding="5" cellspacing="0">
+
+                                        <th style ="text-align:left;font-size:25px;font-family:sans-serif;font-color:PowderBlue;">Higher secondary</th>
+                                        <tr style="width:100%">
+                                            <td style="width:50%">
+                                                <label for="school2" class="control-label">Name Of Institute</label>
+                                                <input type="school2" name="school2" t-att-value="school2" id="school2" size="50" 
+                                                class="form-control" required="required"/>
+                                            </td> 
+                                            <td>
+                                                <label for="sc_percentage2" class="control-label">Percentage</label>
+                                                <input type="number" name="" t-att-value="sc_percentage2" id="sc_percentage2" maxlength="10" style="width:100%;max-width: 260px" 
+                                                class="form-control"  required="required"/>                                            
+                                            </td>
+                                            <td>
+                                                <label for="rollno2" class="control-label">Registration Number</label>
+                                                <input type="rollno2" name="rollno2" t-att-value="rollno2" id="rollno2" 
+                                                class="form-control"  required="required"/>                                            
+                                            </td> 
+                    
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <label for="sc_From2" class="control-label">Batch From</label>
+                                                <input type="date" name="sc_From2" t-att-value="sc_From2" id="sc_From2" maxlength="100" style="width:100%;max-width: 535px"
+                                                class="form-control" required="required"/>
+                                            </td>
+                                            <td>
+                                                <label for="sc_To2" class="control-label">Batch To</label>
+                                                <input type="date" name="sc_To1" t-att-value="sc_To2" id="sc_To2" maxlength="100" style="width:100%;max-width: 535px"
+                                                class="form-control" required="required"/>
+                                            </td>
+                                        </tr>
+
+                                    </table>
+
+                                    <table border="0" cellpadding="5" cellspacing="0">
+
+                                        <th style ="text-align:left;font-size:25px;font-family:sans-serif;font-color:PowderBlue;">Graduation</th>
+                                        <tr style="width:100%">
+
+                                            <td style="width:50%">
+                                                <label for="school2" class="control-label">Name Of Institute</label>
+                                                <input type="school2" name="school2" t-att-value="school2" id="school2" size="50" 
+                                                class="form-control" required="required"/>
+                                            </td> 
+
+                                            <td>
+                                                <label for="sc_percentage2" class="control-label">Percentage</label>
+                                                <input type="number" name="" t-att-value="sc_percentage2" id="sc_percentage2" maxlength="10" style="width:100%;max-width: 260px" 
+                                                class="form-control"  required="required"/>                                            
+                                            </td>
+
+                                            <td>
+                                                <label for="rollno3" class="control-label">Registration Number</label>
+                                                <input type="rollno3" name="rollno3" t-att-value="rollno3" id="rollno3" 
+                                                class="form-control"  required="required"/>                                            
+                                            </td> 
+                    
+                                        </tr>
+
+                                        <tr style="width:100%">
+                                            <td style="width:50%">
+                                                <label for="degree" class="control-label">Graduation Degree</label>
+                                                <input type="degree" name="degree" t-att-value="degree" id="degree" 
+                                                class="form-control"  required="required"/>
+                                            </td> 
+
+                                            <td>
+                                                <label for="sc_From3" class="control-label">Batch From</label>
+                                                <input type="date" name="sc_From3" t-att-value="sc_From3" id="sc_From3" maxlength="100" style="width:100%;max-width: 535px"
+                                                class="form-control" required="required"/>
+                                            </td>
+
+                                            <td>
+                                                <label for="sc_To3" class="control-label">Batch To</label>
+                                                <input type="date" name="sc_To3" t-att-value="sc_To3" id="sc_To3" maxlength="100" style="width:100%;max-width: 535px"
+                                                class="form-control" required="required"/>
+                                            </td>
+
+                                        </tr>
+
+
+                                    </table>
+                                </table>
+                                <br>
+                                </br>
+                                <div class="clearfix oe_login_buttons">
+
+                                    <div class="text-center">
+
+                                     <button padding = "15px 42px" type="submit" class="btn btn-primary pull-center">Submit</button>
+
+                                    </div>
+
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <record id="employee_thanks" model="website.page">
+            <field name="name">Thanks</field>
+            <field name="type">qweb</field>
+            <field name="url">/employee-thank-you</field>
+            <field name="website_published">True</field>
+            <field name="key">arun_test.employee_thanks</field>
+            <field name="arch" type="xml">
+                <t name="Thanks" t-name="arun_test.employee_thanks">
+                    <t t-call="website.layout">
+                        <div id="wrap">
+                            <div class="container">
+                                <h1>Thanks!</h1>
+                                
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <div class="alert alert-success" role="status"> Form Submitted  successfully . </div>
+                                        <h2>Make sure all other Form details has been filled.</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </field>
+        </record>
+</odoo>

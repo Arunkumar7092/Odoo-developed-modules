@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_arun_test_user,arun.test,model_arun_test,base.group_user,1,1,1,1
+access_arun_test_manager,arun.test,model_arun_test,base.group_erp_manager,1,1,1,1
+
+access_employee_contacts_user,employee.contacts,model_employee_contacts,base.group_user,1,1,1,1
+access_employee_contacts_manager,employee.contacts,model_employee_contacts,base.group_erp_manager,1,1,1,1
+
+access_previous_employment_lines_user,previous.employment.lines,model_previous_employment_lines,base.group_user,1,1,1,1
+access_previous_employment_lines_manager,previous.employment.lines,model_previous_employment_lines,base.group_erp_manager,1,1,1,1
+
+
+access_employe_resume_user,employe.resume,model_employe_resume,base.group_user,1,1,1,1
+access_employe_resume_manager,employe.resume,model_employe_resume,base.group_erp_manager,1,1,1,1
+

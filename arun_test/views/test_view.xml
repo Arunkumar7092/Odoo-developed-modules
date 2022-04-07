@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record id="view_Arun_test_form" model="ir.ui.view">
+        <field name="name">Employee</field>
+        <field name="model">arun.test</field>
+        <field name="arch" type="xml">
+            <form string="testing form view Instances">
+
+
+              <header>
+              <!-- the below code is to create buttons and we can call action in it those actiones are functions which is inside
+              py file -->
+                   <button id="button_interview1"  name="action_interview1" string="First Interview" type="object" class="btn-primary"/>
+                   <button id="button_interview2"  name="action_interview2" string="Second Interview" type="object" class="btn-primary"/>
+                   <button id="button_wait"  name="action_wait" string="wait" type="object" class="btn-primary"/>
+                   <button id="button_hire"  name="action_hire" string="hire" type="object" class="btn-primary"/>
+                   <button id="button_reject"  name="action_reject" string="reject" type="object" class="btn-primary"/>
+                   <button id="button_cancel"  name="action_cancel" string="cancel" type="object"  
+                   states = "interview1,interview2,wait,Hire,reject" />
+                   <field name="state" widget="statusbar" statusbar_visible="interview1,interview2,wait,Hire,reject" default ="initial"/>
+              </header>
+
+
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                        <!-- Order reference/rec name and image section -->
+                            <field name="name_seq" readonly="1"/>
+                            <group>
+                            <td>
+                            <!-- image = fields.Binary() in py file-->
+                            <field name="image" nolabel="1" widget="image" class="oe_right oe_avatar"/>
+                            </td>
+                            </group>
+                        </h1>
+                    </div>
+
+                        <group col="4">
+                        <field name="test_name"/>
+                        <field name="test_age"/>
+                        <field name="company_name"/>
+                        <field name="start_date"/>
+                        <field name="gender"/>
+                        <field name="age_group"/>
+                    </group>
+                    <notebook>
+                        <page string="Profile Overview" name="overview">    
+                                <separator string="Carrier Objective"/>
+                                <field name="notes" />
+
+
+                                <separator string="Work Experience"/>
+                                <field name="about" placeholder="Breif description about you and work"/>
+
+                            
+                        </page>
+                    
+                        <page string="Employee Qualification" name="employee_qualification">
+                            <notebook>
+                                <page string="High School" name="high_school">  
+                                    <separator string="HIGH SCHOOL"/>                    
+                                    <group col ="4">
+                                        <field name="school" />
+                                        <field name="sc_percentage" />
+                                        <field name="rollno1" />
+                                        <field name="sc_From1" />
+                                        <field name="sc_To1" />
+
+
+                                    </group>
+                                </page>
+                                <page string="Higher Secondary" name="higher_school">    
+                                    <separator string="HIGHER SECONDARY"/>                   
+                                    <group col ="4">
+                                        <field name="school2" />
+                                        <field name="sc_percentage2" />
+                                        <field name="rollno2" />
+                                        <field name="sc_From2" />
+                                        <field name="sc_To2" />
+                                    </group>
+                                </page>
+                                <page string="GRADUATION" name="Graduation">      
+                                    <separator string="GRADUATION"/>                 
+                                    <group col ="4">
+                                        <field name="degree" />
+                                        <field name="dg_percentage" />
+                                        <field name="department" />
+                                        <field name="college_name" />
+                                        <field name="rollno3" />
+                                        <field name="sc_From3" />
+                                        <field name="sc_To3" />
+
+                                    </group>
+                                </page>
+                            </notebook>
+                        </page>   
+                        <page string="Skills and language" name="skill_language">
+                            <group col = "4">
+
+                                <field name="skills">
+                                    <tree editable ="top">
+                                        <field name="employee_skills" required = "True" />
+                                    </tree>
+                                </field>
+                                <field name="language_speak">
+                                    <tree editable ="top">
+                                        <field name="language" required = "True" />
+                                    </tree>
+                                </field>
+
+                            </group>
+                        </page>
+                        <page string="Previous Employment" name="previous_employment">
+                            <field name="employment_line_ids">
+                            <tree editable ="top">
+                            <field name="empployment_name" required = "True"/>
+                            <field name="employment_id" required = "True"/>
+                            <field name="empployment_title" required = "True"/>    
+                            <field name="from_date" required = "True"/>
+                            <field name="To_date" required = "True"/>
+                            <field name="employment_salary" />
+                            <field name="employment_resignation" />
+                            <field name="empployment_address"/>
+                            </tree>
+                            </field>
+                        </page>
+                        <page string="Address and Perosnal " name="address_personal">
+                            <notebook>
+                                <page string="Address" name="address_tab">
+                                    <group col = "4">     
+                                        <separator string="PERMANENT ADDRESS"/>  
+                                        <separator string="Current ADDRESS" attrs="{'invisible': [('type','=', 'Toggle if Both permanet and current address is same')]}"/>  
+                                    </group>
+                                    <group col = "4"> 
+                                            <field name="street"  placeholder="street 1" />
+                                            <field name="current_street"  placeholder="street 1" attrs="{'invisible': [('type','=', 'Toggle if Both permanet and current address is same')]}"/>
+                                            <field name="street2" placeholder="street 2"/>
+                                            <field name="current_street2" placeholder="street 2" attrs="{'invisible': [('type','=', 'Toggle if Both permanet and current address is same')]}"/>
+                                            <field name="city" placeholder="city" />
+                                            <field name="current_city" placeholder="city" attrs="{'invisible': [('type','=', 'Toggle if Both permanet and current address is same')]}"/>
+                                            <field name="state_id" placeholder="state" />
+                                            <field name="current_state_id" placeholder="state" attrs="{'invisible': [('type','=', 'Toggle if Both permanet and current address is same')]}"/>
+                                            <field name="zip" placeholder="postal/Zip code"/>
+                                            <field name="current_zip" placeholder="postal/Zip code" attrs="{'invisible': [('type','=', 'Toggle if Both permanet and current address is same')]}"/>
+                                            <field name="country_id" placeholder="country"/>
+                                            <field name="current_country_id" placeholder="country" attrs="{'invisible': [('type','=', 'Toggle if Both permanet and current address is same')]}"/>
+                                    </group> 
+                                    <field name="type" widget="radio"/>
+
+
+                                </page>
+
+                                <page string="Perosnal" name="personal">  
+                                    <separator string="PERSONAL"/>                    
+                                    <group col ="4">
+                                        <field name="maritial_status" />
+                                        <field name="aadhar_no" />
+                                        <field name="pan_no" />
+                                        <field name="test_age"/>
+                                        <field name="company_name"/>
+                                        <field name="email_id"/>
+                                    </group>
+                                </page>
+                            </notebook>
+                        </page>   
+                        <page string="Office purpose" name="office_details">
+                            <group col = "4"> 
+                                <field name="selected_position" />
+                                <field name="joining_date" />
+                                <field name="office_address"/>
+                                <field name="office_name"/>
+                                <field name="reporting_manager"/>
+                                <field name="mngr_position"/>
+                                <field name="job_salary"/>
+                                <field name="refernece_name" />
+                                <field name="refernece_position" />
+                                <field name="refernece_email" />
+                                <field name="refernece_mobile" />
+                            </group>
+                        </page>   
+                        <page string="Candidate Preference" name="candidate_preference"> 
+                            <group col = "4"> 
+                                <field name="job_position" />
+                                <field name="expected_salary" />
+                                <field name="previous_salary" />
+                                <field name="availability_date" />
+                                <field name="notice_period" />
+                            </group>
+                        </page> 
+                    </notebook>  
+                </sheet>
+                <div class="o_attachment_preview"/>
+                <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+      </record>
+
+    <record id="view_Arun_test_tree" model="ir.ui.view">
+        <field name="name">testing Instances</field>
+        <field name="model">arun.test</field>
+        <field name="arch" type="xml">
+            <tree string="testing tree view Instances">
+                <!-- <field name="image" nolabel="1" widget="image" class="oe_right oe_avatar"/> -->
+                <field name="name_seq"/>
+                <field name="test_name"/>
+                <field name="test_age"/>
+                <field name="company_name"/>
+                <field name="inst_owner" />
+                <field name="start_date" />
+                <field name="gender" />
+                <field name="age_group"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="Employee_details_search" model="ir.ui.view">
+        <field name="name">employee.details.search</field>
+        <field name="model">arun.test</field>
+        <field name="arch" type="xml">
+            <search string="Search Employee">
+                <!-- <field name="Name" filter_domain="['|',('test_name', 'ilike', self),('name_seq', 'ilike', self)]"/> -->
+                <field name="name_seq"/>
+                <field name="test_name"/>
+                <separator />
+                <filter string="Male" name="male" domain="[('gender', '=', 'male')]"/>
+                <filter string="Female" name="female" domain="[('gender', '=', 'female')]"/>
+                <filter string="Major" name="major" domain="[('age_group', '=', 'major')]"/>
+                <filter string="Minor" name="minor" domain="[('age_group', '=', 'minor')]"/>
+
+                <group expand="0" string="Group By">
+                    <filter string="Gender" name="gender" context="{'group_by':'gender'}"/>
+                    <filter string="Status" name="state" context="{'group_by':'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_test_accounts" model="ir.actions.act_window">
+        <field name="name">Employee Data</field>
+        <field name="res_model">arun.test</field>
+        <field name="view_mode">tree,form</field>
+        <!-- <field name="context">{"search_default_male":1}</field>
+        <field name="context">{"search_default_female":1}</field> -->
+        <field name="context">{"search_default_major":1}</field>
+    </record>
+
+
+    <record id="action_employee_contacts" model="ir.actions.act_window">
+        <field name="name">Employee Data</field>
+        <field name="res_model">employee.contacts</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+
+    <menuitem id="quality_test_menu_root" name="Employee Resume" sequence="-1"/>
+    <menuitem name ='Employee Hiring' id="arun_test.menu_root" web_icon="arun_test,static/description/icon.png"/>
+
+    <menuitem id="menu_hosting_test" name="Employee" parent="quality_test_menu_root" action="action_test_accounts"/>  
+    <menuitem id="employee_submenu" name="contacts" parent="menu_hosting_test" action="action_employee_contacts"/>
+
+
+</odoo>

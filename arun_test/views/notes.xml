@@ -1,0 +1,58 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="employee_page" name="employee resume">
+        <t t-call="web.html_container">
+            <t t-call="website.layout"> -->
+                <!-- <t name="Web layout" t-name="web.layout">&lt;!DOCTYPE html&gt;
+                <html t-att="html_data or {}"> -->
+                        <div class="container">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <td>
+                                            Name
+                                        </td>
+                                        <td>
+                                            Age
+                                        </td>
+                                        <td>
+                                            Gender
+                                        </td>
+                                        <td>
+                                            Mobile number
+                                        </td>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="employees" t-as="employee">
+                                        <tr>
+                                            <td>
+                                                <t t-esc="employee.test_name"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="employee.test_age"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="employee.gender"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="employee.company_name"/>
+                                            </td>
+                                            
+                                        </tr>
+                                    </t>    
+                                </tbody>
+                            </table>
+
+                        </div>
+                <!-- </html>        
+               </t> -->
+            </t>
+        </t>
+    </template>
+
+</odoo>
+   

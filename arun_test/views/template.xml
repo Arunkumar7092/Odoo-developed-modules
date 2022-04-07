@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="menu_patient_form" model="website.menu">
+            <field name="name">Candidates Details Form</field>
+            <field name="url">/employee_webform</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence">55</field>
+        </record>
+        <record id="menu_educational_form" model="website.menu">
+            <field name="name">Educational Detail</field>
+            <field name="url">/employee_educationform</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence">55</field>
+        </record>
+         <record id="menu_skill_form" model="website.menu">
+            <field name="name">Employee Contacts</field>
+            <field name="url">/employee_skillsetform</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence">55</field>
+        </record>
+
+        <template id="create_employee" name="Employee Form">
+            <t t-call="website.layout">
+                <div id="wrap" class="oe_structure oe_empty">
+                    <div id="ListPage">
+                        <div class="search-bar" id="divSearchBar" style="padding: 10px;background-color: orange;">
+                            <div class="container">
+                                <div class="col-sm-4">
+                                    <h1>SEARCH EMPLOYEE</h1>
+                                </div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-offset-2 col-sm-4" style="margin-top: 22px;">
+                                    <form action="/patients" id="frmGetCustomer" method="POST">
+                                        <div class="input-group input-group-sm">
+                                            <input  autocomplete="off" type="text" class="form-control" required="required" id="search"
+                                                   name="search" placeholder="Enter mobile/name/email" align="right"/>
+                                            <span class="border border-dark">
+                                                <button type="submit" class="btn a-submit btn-default btn-flat"><i
+                                                        class="fa fa-search" ></i></button>
+                                                   <!-- <button padding = "15px 42px" type="submit" class="btn btn-primary pull-center">Submit</button> -->
+
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
+                                    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="oe_structure"   style="padding: 10px;background-color: LightGray;">
+                        <div class="container" >
+                        
+                            <form role="form" action="/create/webemployee" method="POST">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                                <h style ="text-align:left;font-size:25px;font-family:sans-serif;font-color:PowderBlue;font-weight: 700;">Personal Details</h>
+                                <table border="0" cellpadding="5" cellspacing="0">
+                                    <tr style="width:100%">
+                                        <td style="width:50%">
+                                            <label for="test_name" class="control-label">Name*</label>
+                                            <input type="text" name="test_name" t-att-value="test_name" id="test_name" size="50" 
+                                            class="form-control" placeholder="e.g. your name" />
+                                        </td> 
+                                        <td style="width:15%">
+                                            <label for="test_age" class="control-label">Age*</label>
+                                            <input type="number" name="test_age" t-att-value="test_age" id="test_age" maxlength="10" style="width:100%;max-width: 260px" 
+                                            class="form-control"  />                                            
+                                        </td> 
+                                        <br></br>
+                                        <td style="width:25%">
+                                            <label for="job_position" class="control-label">Applying For Position*</label>
+                                            <input type="text" name="job_position" t-att-value="job_position" id="job_position" maxlength="20" style="width:100%;max-width: 260px" 
+                                            class="form-control" />                                            
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td >
+                                            <label for="email_id" class="control-label">Email*</label>
+                                            <input type="email" name="email_id" t-att-value="email_id" id="email_id" maxlength="80" style="width:100%;max-width: 535px"
+                                            class="form-control" />
+                                        </td>
+                                        <td>
+                                            <label for="start_date" class="control-label">Birth date</label>
+                                            <input type="date" name="start_date" t-att-value="start_date" id="start_date" maxlength="100" style="width:100%;max-width: 535px"
+                                            class="form-control" />
+                                        </td>
+                                        <td style="width:100%">
+                                            <label for="company_name" class="control-label">Mobile Number*</label>
+                                            <input type="text" name="company_name" t-att-value="company_name" id="company_name" size="100" style="width:100%;max-width: 535px"
+                                            class="form-control" required="required"/>
+                                        </td>
+                                    </tr>
+                                    <tr> 
+
+                                        <td> 
+                                            <label for="inst_owner" class="control-label">Contact Adress</label>
+                                            <input type="text" name="inst_owner" t-att-value="inst_owner" id="inst_owner" maxlength="100" style="width:100%;max-width: 535px"
+                                            class="form-control" />
+                                        </td>
+                                         <td > 
+                                            <label for="about" class="control-label">About</label>
+                                            <input type="text" name="about" t-att-value="about" id="about" maxlength="100" style="width:100%;max-width: 535px"
+                                            class="form-control" />
+                                        </td>
+                                    </tr> 
+                                </table>
+                                <br>
+                                </br>
+                                <br>
+                                </br>
+                                <br>
+                                </br>
+                                
+                                <h style ="text-align:left;font-size:25px;font-family:sans-serif;font-color:PowderBlue;font-weight: 700;">Educational details</h>
+                                <p>(please also attach the certificate of education qualified that mentioned below)</p>
+                                
+                                <br>
+                                </br>
+
+                                <table border="0" cellpadding="5" cellspacing="0">
+
+                                    <th style ="text-align:left;font-size:25px;font-family:sans-serif;font-color:PowderBlue;">High school</th>
+                                    <tr style="width:100%">
+                                        <td style="width:50%">
+                                            <label for="school" class="control-label">Name Of Institute*</label>
+                                            <input type="text" name="school" t-att-value="school" id="school" size="50" 
+                                            class="form-control" />
+                                        </td> 
+                                        <td>
+                                            <label for="sc_percentage" class="control-label">Percentage*</label>
+                                            <input type="number" name="sc_percentage" t-att-value="sc_percentage" id="sc_percentage" maxlength="10" style="width:100%;max-width: 260px" 
+                                            class="form-control"  />                                            
+                                        </td>
+                                        <td>
+                                            <label for="rollno1" class="control-label">Registration Number*</label>
+                                            <input type="number" name="rollno1" t-att-value="rollno1" id="rollno1" 
+                                            class="form-control"  />                                            
+                                        </td> 
+                
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="sc_From1" class="control-label">Batch From*</label>
+                                            <input type="date" name="sc_From1" t-att-value="sc_From1" id="sc_From1" maxlength="100" style="width:100%;max-width: 535px"
+                                            class="form-control" />
+                                        </td>
+                                        <td>
+                                            <label for="sc_To1" class="control-label">Batch To*</label>
+                                            <input type="date" name="sc_To1" t-att-value="sc_To1" id="sc_To1" maxlength="100" style="width:100%;max-width: 535px"
+                                            class="form-control" />
+                                        </td>
+                                    </tr>
+
+                                </table>
+                                <table border="0" cellpadding="5" cellspacing="0">
+
+                                    <th style ="text-align:left;font-size:25px;font-family:sans-serif;font-color:PowderBlue;">Higher secondary</th>
+                                    <tr style="width:100%">
+                                        <td style="width:50%">
+                                            <label for="school2" class="control-label">Name Of Institute*</label>
+                                            <input type="text" name="school2" t-att-value="school2" id="school2" size="50" 
+                                            class="form-control" />
+                                        </td> 
+                                        <td>
+                                            <label for="sc_percentage2" class="control-label">Percentage*</label>
+                                            <input type="number" name="sc_percentage2" t-att-value="sc_percentage2" id="sc_percentage2" maxlength="10" style="width:100%;max-width: 260px" 
+                                            class="form-control"  />                                            
+                                        </td>
+                                        <td>
+                                            <label for="rollno2" class="control-label">Registration Number*</label>
+                                            <input type="number" name="rollno2" t-att-value="rollno2" id="rollno2" 
+                                            class="form-control"  />                                            
+                                        </td> 
+                
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <label for="sc_From2" class="control-label">Batch From*</label>
+                                            <input type="date" name="sc_From2" t-att-value="sc_From2" id="sc_From2" maxlength="100" style="width:100%;max-width: 535px"
+                                            class="form-control" />
+                                        </td>
+                                        <td>
+                                            <label for="sc_To2" class="control-label">Batch To*</label>
+                                            <input type="date" name="sc_To2" t-att-value="sc_To2" id="sc_To2" maxlength="100" style="width:100%;max-width: 535px"
+                                            class="form-control" />
+                                        </td>
+                                    </tr>
+
+                                </table>
+
+                                <table border="0" cellpadding="5" cellspacing="0">
+
+                                    <th style ="text-align:left;font-size:25px;font-family:sans-serif;font-color:PowderBlue;">Graduation</th>
+                                    <tr style="width:100%">
+
+                                        <td style="width:50%">
+                                            <label for="college_name" class="control-label">Name Of Institute</label>
+                                            <input type="text" name="college_name" t-att-value="college_name" id="college_name" size="50" 
+                                            class="form-control" />
+                                        </td> 
+
+                                        <td>
+                                            <label for="dg_percentage" class="control-label">Percentage*</label>
+                                            <input type="number" name="dg_percentage" t-att-value="dg_percentage" id="dg_percentage" maxlength="10" style="width:100%;max-width: 260px" 
+                                            class="form-control"  />                                            
+                                        </td>
+
+                                        <td>
+                                            <label for="rollno3" class="control-label">Registration Number*</label>
+                                            <input type="number" name="rollno3" t-att-value="rollno3" id="rollno3" 
+                                            class="form-control"  />                                            
+                                        </td> 
+                
+                                    </tr>
+
+                                    <tr style="width:100%">
+                                        <td style="width:50%">
+                                            <label for="degree" class="control-label">Graduation Degree*</label>
+                                            <input type="text" name="degree" t-att-value="degree" id="degree" 
+                                            class="form-control"  />
+                                        </td> 
+
+                                        <td>
+                                            <label for="sc_From3" class="control-label">Batch From*</label>
+                                            <input type="date" name="sc_From3" t-att-value="sc_From3" id="sc_From3" maxlength="100" style="width:100%;max-width: 535px"
+                                            class="form-control" />
+                                        </td>
+
+                                        <td>
+                                            <label for="sc_To3" class="control-label">Batch To*</label>
+                                            <input type="date" name="sc_To3" t-att-value="sc_To3" id="sc_To3" maxlength="100" style="width:100%;max-width: 535px"
+                                            class="form-control" />
+                                        </td>
+
+                                    </tr>
+
+
+                                </table >
+                                <br>
+                                </br>
+                                <br>
+                                </br>
+                                <br>
+                                </br>
+                                <h style ="text-align:left;font-size:25px;font-family:sans-serif;font-color:PowderBlue;font-weight: 700;">SKILL SETS</h>
+                                <br>
+                                </br>
+                                <br>
+                                </br>
+
+                                <table border="0" cellpadding="5" cellspacing="0">
+                                     <!-- <table id="cvtable" class="header_table table table-bordered" width="100%"> -->
+                                        <tr>
+                                            <th valign="middle"  style="background-color:#C0C0C0;text-align: center;">Skill Sets</th>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td tyle="color:black;">
+
+                                                <select class='form-control' name='employee_skills1' id='employee_skills1'  options="{'horizontal': true}">
+                                                    <option value=''>Select</option>
+                                                    <option value='odoo'>ODOO</option>
+                                                    <option value='python'>Python programming Language</option>
+                                                    <option value='java'>Java programming Language</option>
+                                                    <option value='c'>C programming Language</option>
+                                                    <option value='c++'>C ++ programming Language</option>
+                                                    <option value='oops'>Objects Orieneted programming Language</option>
+                                                    <option value='machine learning'>Machine Learning</option>
+                                                    <option value='c#'>c#</option>
+                                                    <option value='html'>HTML and CSS</option>
+                                                    <option value='iot'>Interenet of Things</option>
+                                                    <option value='sap'>SAP</option>
+                                                    <option value='odooerp'>ODOO ERP</option>
+                                                    <option value='sales'>Sales Management</option>
+                                                    <option value='data'>Data Analysis</option>
+                                                    <option value='team'>Team Leadership</option>
+                                                    <option value='communication'>Good Communication</option>
+                                                    <option value='order'>Order To Cash</option>
+                                                    <option value='pogramming'>Programming</option>
+                                                    <option value='linux'>Linux</option>
+                                                    <option value='arudino'>Arduino</option>
+                                                    <option value='electical'>Electrical and Electronics</option>
+                                                    <option value='industry'>Industry</option>
+                                                    <option value='chemical'>Chemical</option>
+                                                    <option value='networking'>Networking</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+
+                                        <input type="text" hidden="hidden" value="1" id="countskl" name="countskl"/>
+                                        <tbody id="skl" name="skl"></tbody>
+                                        <tr>
+                                            <td  tyle="color:black;button-align:left;"><input  type="button" id="3" class="form-control btn-primary" value="Add more skills"  onclick="addskill()"/>
+                                            </td>
+                                            <td>
+                                                
+                                            </td>
+                                        </tr>
+                                </table>
+                                <br>
+                                </br>
+                                <br>
+                                </br>
+                                <h style ="text-align:left;font-size:25px;font-family:sans-serif;font-color:PowderBlue;font-weight: 700;">LANGUAGE</h>
+                                <br>
+                                </br>
+                                <br>
+                                </br>
+                                <table border="0" cellpadding="5" cellspacing="0">
+                                     <!-- <table id="cvtable" class="header_table table table-bordered" width="100%"> -->
+                                        <tr>
+                                            <th valign="middle"  style="background-color:#C0C0C0;text-align: center;">Language</th>
+                                            <!-- <group col ="4">
+                                                 <th valign="middle"  style="background-color:#C0C0C0;text-align: center;width:50%">Language</th>
+                                            </group> -->
+
+                                        </tr>
+                                        
+                                        <tr>
+                                                                                    
+                                            <td tyle="color:black;" style="width:50%">
+
+                                                <select class='form-control' name='language1' id='language1'  options="{'horizontal': true}">
+                                                    <option value=''>Select</option>
+                                                    <option value='english'>English</option>
+                                                    <option value='hindi'>HINDI</option>
+                                                    <option value='tamil'>TAMIL</option>
+                                                    <option value='french'>FRENCH</option>
+                                                    <option value='russian'>RUSSIAN</option>
+                                                    <option value='bengali'>BENGALI</option>
+                                                    <option value='telugu'>Telugu</option>
+                                                    <option value='spanish'>SPANISH</option>
+                                                    <option value='portuguese'>PORTUGUESE</option>
+                                                    <option value='chinese'>CHINESE</option>
+                                                    <option value='japanese'>JAPANESE</option>
+                                                    <option value='arabic'>ARABIC</option>
+                                                    <option value='urudu'>URUDU</option>
+                                                    <option value='punjabhi'>PUNJABHI</option>
+                                                    <option value='korean'>KOREAN</option>
+                                                    <option value='turkish'>TURKISH</option>
+                                                    <option value='german'>GERMAN</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <input type="text" hidden="hidden" value="1" id="countlan" name="countlan"/>
+                                        <tbody id="lan" name="lan"></tbody>
+                                        <tr>
+                                            <td  tyle="color:black;button-align:left;"><input  type="button" id="4" class="form-control btn-primary" value="Add more languages"  onclick="addlang()"/>
+                                            </td>
+                                            <td>
+                                                
+                                            </td>
+                                        </tr>
+                                </table>
+
+
+                                <br>
+                                </br>
+                                 <br>
+                                </br>
+
+                                <br>
+                                </br>
+
+                                <br>
+                                </br>
+                                 <h style ="text-align:left;font-size:25px;font-family:sans-serif;font-color:PowderBlue;font-weight: 700;">Previous Employment details</h>
+                                <br>
+                                </br>
+                                <br>
+                                </br>
+
+                              
+                                <table id="cvtable" class="header_table table table-bordered"  bordercolor="black" style="width:120%">
+
+                                            <tr style="width:60%">
+                                                <th valign="middle"  style="background-color:#C0C0C0;text-align: left;font-size:16px;font-family:sans-serif;color:black;width:100%;">Company Name</th>
+                                                <th valign="middle"  style="background-color:#C0C0C0;text-align: center;font-size:16px;font-family:sans-serif;color:black;width:100%;">Emp ID</th>
+                                                <th valign="middle"  style="background-color:#C0C0C0;text-align: center;center;font-size:16px;font-family:sans-serif;color:black;width:100%;">Job Title</th>
+                                                <th valign="middle"  style="background-color:#C0C0C0;text-align: center;center;font-size:16px;font-family:sans-serif;color:black;width:100%;">From Date</th>
+                                                <th valign="middle"  style="background-color:#C0C0C0;text-align: center;center;font-size:16px;font-family:sans-serif;color:black;width:100%;">To Date</th>
+                                                <th valign="middle"  style="background-color:#C0C0C0;text-align: center;center;font-size:16px;font-family:sans-serif;color:black;width:100%;">Salary/Year</th>
+                                                <th valign="middle"  style="background-color:#C0C0C0;text-align: center;center;font-size:16px;font-family:sans-serif;color:black;width:100%;">Reason For Leaving</th>
+                                                <th valign="middle"  style="background-color:#C0C0C0;text-align: center;center;font-size:16px;font-family:sans-serif;color:black;width:100%;">Company Address</th>
+
+                                            </tr>
+                                            
+                                            
+                                            <tr>
+                                                
+                                                <td><input type="text" id="empployment_name1" name="empployment_name1" class="form-control" size="19" /></td>
+                                                <td><input type="text" id="employment_id1" name="employment_id1" class="form-control" size="19"/></td>
+                                                <td><input type="text" id="empployment_title1" name="empployment_title1" class="form-control" size="19" /></td>
+                                                <td><input type="date" id="from_date1" name="from_date1" class="form-control" style="width:150px"/></td>
+                                                <td><input type="date" id="To_date1" name="To_date1" class="form-control" style="width:150px"/></td>
+                                                <td><input type="number" id="employment_salary1" name="employment_salary1" class="form-control" style="width:150px" /></td>
+                                                <td><input type="text" id="employment_resignation1" name="employment_resignation1" class="form-control" size="19" /></td>
+                                                <td><input type="text" id="empployment_address1" name="empployment_address1" class="form-control" size="19" /></td>
+                                            </tr>
+
+                                            <input type="text" hidden="hidden" value="1" id="countexp" name="countexp"/>
+                                            <tbody id="exp" name="exp"></tbody>
+
+                                            <tr>
+                                                <td  tyle="color:black;"><input  type="button" id="2" class="form-control btn-primary" value="Add an item"  onclick="addExp()"/>
+                                                </td>
+                                                <td>
+                                                    
+                                                </td>
+                                            </tr>
+                                </table>
+                                             
+                                  
+                                <br>
+                                </br>
+                                <div class="clearfix oe_login_buttons">
+
+                                    <div class="text-center">
+
+                                     <button padding = "15px 42px" type="submit" class="btn btn-primary pull-center">Submit</button>
+
+                                    </div>
+
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <!-- <record id="employee_thanks" model="website.page">
+            <field name="name">Thanks</field>
+            <field name="type">qweb</field>
+            <field name="url">/employee-thank-you</field>
+            <field name="website_published">True</field>
+            <field name="key">arun_test.employee_thanks</field>
+            <field name="arch" type="xml">
+                <t name="Thanks" t-name="arun_test.employee_thanks">
+                    <t t-call="website.layout">
+                        <div id="wrap">
+                            <div class="container">
+                                <h1>Thanks!</h1>
+
+                                <form action="/employee_webform" method="POST">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>     
+                                    
+                                        <div class="row">
+                                            <div class="col-lg-8">
+                                                <div class="alert alert-success" role="status"> Form Submitted  successfully . </div>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+
+                                            <button type="submit"  class="btn btn-primary">Dashboard</button>
+                                            <button padding = "15px 42px" type="button" class="btn btn-primary pull-center">Submit</button>
+                                        </div>
+                                </form>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </field>
+        </record> -->
+</odoo>
